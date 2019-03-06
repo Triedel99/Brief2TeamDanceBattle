@@ -42,6 +42,15 @@ public class Character : MonoBehaviour
     public void InitialStats()
     {
         // TODO - First, you can
+
+        rhythm = Random.Range(1, 21);
+        style = Random.Range(1, 21);
+        luck = Random.Range(1, 21);
+
+        //Debug.Log(rhythm);
+        //Debug.Log(style);
+        //Debug.Log(luck);
+
         Debug.LogWarning("InitialStats called, needs to distribute points into stats. This should be able to be ported from previous brief work");
     }
 

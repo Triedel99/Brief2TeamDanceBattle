@@ -42,7 +42,37 @@ public class FightManager : MonoBehaviour
 
         yield return new WaitForSeconds(fightAnimTime);
 
+        //calulating the luck values for lhs and rhs
+        int lhsLuck = Random.Range(0, lhs.luck + 1);
+        int rhsLuck = Random.Range(0, rhs.luck + 1);
+
+        //Debug.Log(lhsLuck);
+        //Debug.Log(rhsLuck);
+
+        //Calulating the lhs and rhs total battle number
+        int lhsResult = lhs.rhythm + lhs.style * lhsLuck;
+        int rhsResult = rhs.rhythm + rhs.style * rhsLuck;
+
+        //Debug.Log(lhsResult);
+        //Debug.Log(rhsResult);
+
         float outcome = 0;
+        if (lhsResult > rhsResult)
+        {
+            outcome = 1;
+        }
+        else if (lhsResult < rhsResult)
+        {
+            outcome = -1;
+        }
+        else
+        {
+            outcome = 0;
+        }
+
+        Debug.Log(outcome);
+
+        
         //defaulting to draw 
         Character winner = lhs, defeated = rhs;
         Debug.LogWarning("Attack called, needs to use character stats to determine winner with win strength from 1 to -1. This can most likely be ported from previous brief work.");
