@@ -28,14 +28,11 @@ public class CharacterNameGenerator : ScriptableObject
     public CharacterName[] GenerateNames(int namesNeeded)
     {
         CharacterName[] names = new CharacterName[namesNeeded];
-        
-        //TODO - filling this with empty names so the rest of our code is safe to run without need for many null checks
-        
+                
         for (int i = 0; i < names.Length; i++)
         {
-            // TODO for week 7 - Do this 4th
-            // - Make use of the firstNames, lastNames, nicknames and
-            // - descriptors lists
+            //Creating a new character name in the list
+            //choosing a range number from 0 to the list count
             CharacterName currentName = new CharacterName(firstNames[Random.Range(0, firstNames.Count)],
                                          lastNames[Random.Range(0, lastNames.Count)],
                                          nicknames[Random.Range(0, nicknames.Count)],

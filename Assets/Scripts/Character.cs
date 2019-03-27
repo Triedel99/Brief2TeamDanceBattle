@@ -41,8 +41,8 @@ public class Character : MonoBehaviour
 
     public void InitialStats()
     {
-        // TODO - First, you can
 
+        //random number for the players stat between 1 - 20
         rhythm = Random.Range(1, 21);
         style = Random.Range(1, 21);
         luck = Random.Range(1, 21);

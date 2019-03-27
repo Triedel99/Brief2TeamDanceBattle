@@ -59,17 +59,22 @@ public class FightManager : MonoBehaviour
         float outcome = 1;
         Character winner = lhs, defeated = rhs;
 
+        //Lhs wins
         if (lhsResult > rhsResult)
         {
             outcome = 1;
             winner = lhs;
             defeated = rhs;
+            Debug.Log("lhs wins");
         }
+
+        //Rhs wins
         else
         {
             outcome = -1;
             winner = rhs;
             defeated = lhs;
+            Debug.Log("rhs wins");
         }
 
         Debug.Log(outcome);
