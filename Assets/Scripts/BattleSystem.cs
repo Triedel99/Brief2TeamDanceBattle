@@ -43,18 +43,22 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(battlePrepTime);
 
         //checking for no dancers on either team
-        if(TeamA.allDancers.Count == 0 && TeamB.allDancers.Count == 0)
-        {
-            Debug.LogWarning("DoRound called, but there are no dancers on either team. DanceTeamInit needs to be completed");
-
-        }
-        else if (TeamA.activeDancers.Count > 0 && TeamB.activeDancers.Count > 0)
+        if (TeamA.activeDancers.Count > 0 && TeamB.activeDancers.Count > 0)
         {
             Debug.LogWarning("DoRound called, it needs to select a dancer from each team to dance off and put in the FightEventData below");
+
+            // TODO pick a dancer from Team A and a dancer from Team B
+            // Use the line of code below to start the fight
+            // a and b should replaced with variables you create
+            // to hold the dancer from each team
             //GameEvents.RequestFight(new FightEventData(a, b));
         }
         else
         {
+            // TODO: Work out who the winning team is
+            // HINT: You have access to the number of dancers
+            // in each team
+
             //GameEvents.BattleFinished(winner);
             //winner.EnableWinEffects();
 
@@ -67,10 +71,22 @@ public class BattleSystem : MonoBehaviour
     {
         Debug.LogWarning("FightOver called, may need to check for winners and/or notify teams of zero mojo dancers");
 
+        // TODO - check if the battle is over
+        // ONLY do the win effects and remove from active
+        // if the outcome is valid (ie. not for a draw)
+        Debug.Log(data.outcome);
+
+        // play the win/lose effects
+        data.winner.myTeam.EnableWinEffects();
+
+        // remove the defeated character
+        data.defeated.myTeam.RemoveFromActive(data.defeated);
+
         //defaulting to starting a new round to ease development
         //calling the coroutine so we can put waits in for anims to play
         StartCoroutine(HandleFightOver());
     }
+
 
     IEnumerator HandleFightOver()
     {
@@ -78,6 +94,5 @@ public class BattleSystem : MonoBehaviour
         TeamA.DisableWinEffects();
         TeamB.DisableWinEffects();
         Debug.LogWarning("HandleFightOver called, may need to prepare or clean dancers or teams and checks before doing GameEvents.RequestFighters()");
-        //GameEvents.RequestFighters();
     }
 }

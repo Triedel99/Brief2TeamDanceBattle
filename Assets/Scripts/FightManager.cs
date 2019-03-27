@@ -56,25 +56,27 @@ public class FightManager : MonoBehaviour
         //Debug.Log(lhsResult);
         //Debug.Log(rhsResult);
 
-        float outcome = 0;
+        float outcome = 1;
+        Character winner = lhs, defeated = rhs;
+
         if (lhsResult > rhsResult)
         {
             outcome = 1;
-        }
-        else if (lhsResult < rhsResult)
-        {
-            outcome = -1;
+            winner = lhs;
+            defeated = rhs;
         }
         else
         {
-            outcome = 0;
+            outcome = -1;
+            winner = rhs;
+            defeated = lhs;
         }
 
         Debug.Log(outcome);
 
         
-        //defaulting to draw 
-        Character winner = lhs, defeated = rhs;
+        
+        
         Debug.LogWarning("Attack called, needs to use character stats to determine winner with win strength from 1 to -1. This can most likely be ported from previous brief work.");
 
 
